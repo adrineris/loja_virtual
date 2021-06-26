@@ -1,6 +1,6 @@
 # loja_virtual
 
-A new Flutter project.
+Projeto Loja Virtual
 
 ## Getting Started
 
