@@ -1,3 +1,6 @@
+import 'package:loja_virtual/models/usuario.dart';
+import 'package:loja_virtual/models/user_manager.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/helpers/validators.dart';
 
@@ -39,6 +42,7 @@ class LoginScreen extends StatelessWidget {
                   height: 16,
                 ),
                 TextFormField(
+                  controller: passController,
                   decoration: const InputDecoration(hintText: 'Senha'),
                   autocorrect: false,
                   obscureText: true,
@@ -64,7 +68,9 @@ class LoginScreen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        debugPrint(emailController.text);
+                        context.read<UserManager>().signIn(Usuario(
+                            email: emailController.text,
+                            password: passController.text));
                       }
                     },
                     style: ElevatedButton.styleFrom(
